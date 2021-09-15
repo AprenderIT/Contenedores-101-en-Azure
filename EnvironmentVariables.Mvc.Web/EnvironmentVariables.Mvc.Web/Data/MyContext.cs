@@ -8,9 +8,8 @@ namespace EnvironmentVariables.Mvc.Web.Data
         : base(options)
         { }
 
-
         public DbSet<Profile> Profiles { get; set; }
-        public DbSet<Website> Websites { get; set; }
 
+        public DbSet<Website> Websites { get; set; }
     }
 }

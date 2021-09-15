@@ -11,6 +11,7 @@ namespace EnvironmentVariables.Mvc.Web.Models
         }
 
         public IDictionary<string, string> Variables { get; set; }
+
         public string Search { get; set; }
     }
 }

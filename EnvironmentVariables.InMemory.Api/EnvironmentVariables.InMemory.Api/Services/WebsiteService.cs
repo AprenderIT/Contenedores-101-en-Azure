@@ -87,19 +87,16 @@ namespace EnvironmentVariables.InMemory.Api.Services
                  .Select(x => x.Attributes["content"]?.Value)
                  .FirstOrDefault();
 
-
             if (string.IsNullOrWhiteSpace(title))
             {
                 title = elements.OfType<IHtmlTitleElement>().FirstOrDefault()?.InnerHtml;
             }
-
 
             Website website = new()
             {
                 Title = title,
                 Description = description
             };
-
 
             if (!string.IsNullOrWhiteSpace(image))
             {

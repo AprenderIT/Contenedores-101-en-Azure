@@ -12,6 +12,7 @@ namespace EnvironmentVariables.Sql.Api.Models
         }
 
         public IDictionary<string, string> Variables { get; set; }
+
         public string Search { get; set; }
     }
 }

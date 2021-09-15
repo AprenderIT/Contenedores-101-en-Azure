@@ -13,7 +13,6 @@ namespace EnvironmentVariables.Sql.Api.Controllers
     [ApiController]
     public class EnvironmentVariablesController : ControllerBase
     {
-
         [HttpGet]
         [ProducesResponseType(typeof(EnvironmentVariableModel), 200)]
         public IActionResult GetAll([FromQuery] string search)
@@ -32,6 +31,5 @@ namespace EnvironmentVariables.Sql.Api.Controllers
 
             return Ok(new EnvironmentVariableModel(variables, search));
         }
-
     }
 }

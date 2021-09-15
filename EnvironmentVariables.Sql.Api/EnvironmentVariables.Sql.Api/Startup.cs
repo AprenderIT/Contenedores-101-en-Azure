@@ -54,7 +54,6 @@ namespace EnvironmentVariables.Sql.Api
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,8 +67,6 @@ namespace EnvironmentVariables.Sql.Api
             app.UseSwagger();
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EnvironmentVariables.Sql.Api v1"));
             app.UseCors("MyPolicy");
-
-           
 
             app.UseRouting();
 
@@ -85,7 +82,6 @@ namespace EnvironmentVariables.Sql.Api
                 });
             });
         }
-
 
         private static Task WriteResponse(HttpContext context, HealthReport result)
         {

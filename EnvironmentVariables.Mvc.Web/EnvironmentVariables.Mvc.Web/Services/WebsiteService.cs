@@ -87,12 +87,10 @@ namespace EnvironmentVariables.Mvc.Web.Services
                  .Select(x => x.Attributes["content"]?.Value)
                  .FirstOrDefault();
 
-
             if (string.IsNullOrWhiteSpace(title))
             {
                 title = elements.OfType<IHtmlTitleElement>().FirstOrDefault()?.InnerHtml;
             }
-
 
             Website website = new()
             {

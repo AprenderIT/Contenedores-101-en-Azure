@@ -44,7 +44,6 @@ namespace EnvironmentVariables.Mvc.Web.Controllers
                 .OrderBy(x => x.Key)
                 .ToDictionary(x => x.Key, x => x.Value);
 
-
             if (!string.IsNullOrWhiteSpace(search))
             {
                 variables = variables.Where(x => x.Key.ToLower().Contains(search.ToLower()) || x.Value.ToLower().Contains(search.ToLower()))

@@ -18,7 +18,9 @@ namespace EnvironmentVariables.Mvc.Web.Data
 
         [Display(Name = "Fecha de creación")]
         public DateTime CreationTime { get; set; }
+
         public Guid WebsiteId { get; set; }
+
         [ForeignKey(nameof(WebsiteId))]
         public virtual Website Website { get; set; }
     }

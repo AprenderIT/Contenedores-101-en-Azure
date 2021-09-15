@@ -13,7 +13,6 @@ namespace EnvironmentVariables.InMemory.Api.Controllers
     [ApiController]
     public class EnvironmentVariablesController : ControllerBase
     {
-
         [HttpGet]
         [ProducesResponseType(typeof(EnvironmentVariableModel), 200)]
         public IActionResult GetAll([FromQuery] string search)
@@ -22,7 +21,6 @@ namespace EnvironmentVariables.InMemory.Api.Controllers
                 .HashtableToDictionary<string, string>()
                 .OrderBy(x => x.Key)
                 .ToDictionary(x => x.Key, x => x.Value);
-
 
             if (!string.IsNullOrWhiteSpace(search))
             {

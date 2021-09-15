@@ -38,13 +38,11 @@ namespace EnvironmentVariables.Sql.Api.Services
                 CreationTime = DateTime.UtcNow
             };
 
-
             await _context.Profiles.AddAsync(profile);
             await _context.SaveChangesAsync();
 
             return profile;
         }
-
 
         public async Task DeleteAsync(Guid id)
         {

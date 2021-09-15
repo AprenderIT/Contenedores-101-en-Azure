@@ -42,7 +42,6 @@ namespace EnvironmentVariables.InMemory.Api
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

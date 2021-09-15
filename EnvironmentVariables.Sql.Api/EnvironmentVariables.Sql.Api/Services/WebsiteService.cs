@@ -65,13 +65,11 @@ namespace EnvironmentVariables.Sql.Api.Services
 
             var metatags = elements.OfType<IHtmlMetaElement>();
 
-
             var image = metatags.Where(x =>
                 x.Attributes["property"]?.Value == "og:image" ||
                 x.Attributes["property"]?.Value == "twitter:image")
                 .Select(x => x.Attributes["content"]?.Value)
                 .FirstOrDefault();
-
 
             var description = metatags.Where(x =>
             x.Attributes["property"]?.Value == "og:description" ||
@@ -87,19 +85,16 @@ namespace EnvironmentVariables.Sql.Api.Services
                  .Select(x => x.Attributes["content"]?.Value)
                  .FirstOrDefault();
 
-
             if (string.IsNullOrWhiteSpace(title))
             {
                 title = elements.OfType<IHtmlTitleElement>().FirstOrDefault()?.InnerHtml;
             }
-
 
             Website website = new()
             {
                 Title = title,
                 Description = description
             };
-
 
             if (!string.IsNullOrWhiteSpace(image))
             {
