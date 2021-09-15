@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31410.223
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvironmentVariables.InMemory.Api", "EnvironmentVariables.InMemory.Api\EnvironmentVariables.InMemory.Api.csproj", "{D0B16A50-C4FD-480F-A7EC-61C5FA133F7E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0B16A50-C4FD-480F-A7EC-61C5FA133F7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0B16A50-C4FD-480F-A7EC-61C5FA133F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0B16A50-C4FD-480F-A7EC-61C5FA133F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0B16A50-C4FD-480F-A7EC-61C5FA133F7E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {675D3AF1-36AA-4B0F-B2F7-1E8F9102C518}
+	EndGlobalSection
+EndGlobal

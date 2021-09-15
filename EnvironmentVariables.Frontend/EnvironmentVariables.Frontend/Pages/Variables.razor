@@ -1,0 +1,61 @@
+﻿@page "/variables"
+@inject ProfileService Service
+@inject NavigationManager NavigationManager
+
+
+<EditForm Model="@Model"  OnValidSubmit="@HandleValidSubmit">
+    <div class="row">
+        <div class="col-sm-12 col-lg-8">
+            <InputText @bind-Value="Model.Search" class="form-control" placeholder="Buscar..." />
+
+        </div>
+        <div class="col-sm-12 col-lg-4">
+            <input type="submit" value="Buscar" class="btn btn-info" />
+
+        </div>
+
+    </div>
+
+</EditForm>
+
+
+@if (Model.Variables is not null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Variable</th>
+                <th scope="col">Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var keyvalue in @Model.Variables)
+            {
+                <tr>
+                    <th scope="row">@keyvalue.Key</th>
+                    <td>@keyvalue.Value</td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+}
+
+<NavLink href="/">Regresar</NavLink>
+
+@code {
+    public EnvironmentVariableModel Model { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Model = await Service.EnvironmentVariablesAsync(string.Empty);
+    }
+
+
+    private async Task HandleValidSubmit()
+    {
+
+        Model = await Service.EnvironmentVariablesAsync(Model.Search);
+    }
+}

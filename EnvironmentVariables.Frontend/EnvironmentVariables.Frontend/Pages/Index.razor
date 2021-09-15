@@ -1,0 +1,29 @@
+﻿@page "/"
+@inject ProfileService Service
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="card-columns">
+
+    @if (Profiles is not null)
+    {
+        @foreach (var item in Profiles)
+        {
+            <ProfileCard Profile="item"/>
+        }
+    }
+
+
+
+</div>
+
+@code {
+    public IEnumerable<Profile> Profiles { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Profiles = await Service.ProfilesAllAsync();
+    }
+}

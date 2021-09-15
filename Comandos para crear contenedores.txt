@@ -1,0 +1,55 @@
+
+az acr repository list --name envioronmentvariablesregistry01 --output table
+
+
+
+az container create \
+    --resource-group envioronment-variables-group \
+    --name acr-tasks-mvc \
+    --image envioronmentvariablesregistry01.azurecr.io/mvc:6 \
+    --registry-login-server envioronmentvariablesregistry01.azurecr.io \
+    --ip-address Public \
+    --location westus2 \
+    --registry-username "EnvioronmentVariablesRegistry01" \
+    --registry-password "RnB5fYgndQmAIm/69aLpjz6tPxCwT3ng"
+
+
+az container create \
+    --resource-group envioronment-variables-group \
+    --name acr-tasks-inmemory-api \
+    --image envioronmentvariablesregistry01.azurecr.io/inmemoryapi:2 \
+    --registry-login-server envioronmentvariablesregistry01.azurecr.io \
+    --ip-address Public \
+    --location westus2 \
+    --registry-username "EnvioronmentVariablesRegistry01" \
+    --registry-password "RnB5fYgndQmAIm/69aLpjz6tPxCwT3ng" \
+    --environment-variables 'NumWords'='5' 'MinLength'='8'
+
+
+
+az container create \
+    --resource-group envioronment-variables-group \
+    --name acr-tasks-sql-api \
+    --image envioronmentvariablesregistry01.azurecr.io/sqlapi:2 \
+    --registry-login-server envioronmentvariablesregistry01.azurecr.io \
+    --ip-address Public \
+    --location westus2 \
+    --registry-username "EnvioronmentVariablesRegistry01" \
+    --registry-password "RnB5fYgndQmAIm/69aLpjz6tPxCwT3ng" \
+    --environment-variables 'ConnectionString'='Server=tcp:environmentvariablesprofiledb.database.windows.net,1433;Initial Catalog=ProfilesDb;Persist Security Info=False;User ID=user;Password=Casa1998;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;' 
+
+
+
+az container create \
+    --resource-group envioronment-variables-group \
+    --name acr-tasks-fronted-blazor \
+    --image envioronmentvariablesregistry01.azurecr.io/blazor:11 \
+    --registry-login-server envioronmentvariablesregistry01.azurecr.io \
+    --ip-address Public \
+    --location westus2 \
+    --registry-username "EnvioronmentVariablesRegistry01" \
+    --registry-password "RnB5fYgndQmAIm/69aLpjz6tPxCwT3ng" \
+    --environment-variables 'BackendApi'='http://20.109.133.5/'
+
+
+az container show --resource-group  envioronment-variables-group --name acr-tasks --query ipAddress.ip --output table

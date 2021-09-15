@@ -1,0 +1,40 @@
+﻿@model EnvironmentVariables.Mvc.Web.Models.IndexModel
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<div class="card-columns">
+@foreach(var item in @Model.Profiles)
+{
+    <div class="card" style="width: 18rem;">
+
+        @if(item.Website.ImageLink is null)
+        {
+            <img class="card-img-top" src="/img/gray-solid-background.jpg" alt="@item.Website.Title">
+        }
+        else
+        {
+            <img class="card-img-top" src="@item.Website.ImageLink?.ToString()" alt="@item.Website.Title">
+        }
+      
+      <div class="card-body">
+        <h5 class="card-title">@item.Website.Title</h5>
+        <h6 class="card-title">@item.Name @item.Lastname</h6>
+        <p class="card-text">@item.Website.Description</p>
+        <a href="@item.Website.Link?.ToString()" target="_blank" class="btn btn-primary">Ir al sitio</a>
+        <a asp-controller="Profiles"
+           asp-action="Delete" 
+           asp-route-id="@item.Id" class="btn btn-danger">Borrar</a>
+      </div>
+      <div class="card-footer">
+          <small class="text-muted">@item.CreationTime.GetRelativeTime()</small>
+        </div>
+    </div>
+}
+
+</div>

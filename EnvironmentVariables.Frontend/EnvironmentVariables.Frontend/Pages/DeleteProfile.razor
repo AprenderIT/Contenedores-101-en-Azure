@@ -1,0 +1,66 @@
+﻿@page "/delete/{id:guid}"
+@inject ProfileService Service
+@inject NavigationManager NavigationManager
+
+<h1>Borrar Perfil</h1>
+
+@if(profile is not null)
+{
+    <h3>¿Desea eliminar este perfil?</h3>
+    <div>
+        <EditForm Model="@profile" OnValidSubmit="@HandleValidSubmit">
+        <hr />
+        <dl class="row">
+            <dt class = "col-sm-2">
+                Nombre
+            </dt>
+            <dd class = "col-sm-10">
+                <InputText disabled id="name" @bind-Value="profile.Name" />
+            </dd>
+            <dt class = "col-sm-2">
+                Apellido
+            </dt>
+            <dd class = "col-sm-10">
+                <InputText disabled id="name" @bind-Value="profile.Lastname" />
+            </dd>
+            <dt class = "col-sm-2">
+                Website
+            </dt>
+            <dd class = "col-sm-10">
+                <InputText disabled id="name" @bind-Value="website" />
+            </dd class>
+        </dl>
+    
+        
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <input type="submit" value="Borrar" class="btn btn-danger" /> |
+            <NavLink href="/">Regresar</NavLink>
+        </EditForm>
+    </div>
+}
+
+
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    string website;
+
+    Profile profile;
+
+    protected override async Task OnInitializedAsync()
+    {
+        profile = await Service.ProfilesAsync(Id);
+        website = profile.Website.Link.ToString();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        await Service.DeleteProfileAsync(Id);
+
+        NavigationManager.NavigateTo("/");
+    }
+}

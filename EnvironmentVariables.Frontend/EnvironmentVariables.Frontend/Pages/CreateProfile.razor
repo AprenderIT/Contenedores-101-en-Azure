@@ -1,0 +1,73 @@
+﻿@page "/create"
+@inject ProfileService Service
+@inject NavigationManager NavigationManager
+@using System.ComponentModel.DataAnnotations;
+<h1>Crear</h1>
+
+<h4>Perfil</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <EditForm Model="@Model" OnValidSubmit="@HandleValidSubmit">
+
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+            <div class="form-group">
+                <label class="control-label">Nombre</label>
+                <InputText id="name" @bind-Value="Model.Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Apellido</label>
+                <InputText id="lastname" @bind-Value="Model.Lastname" />
+                <span asp-validation-for="Lastname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Website</label>
+                <InputText id="website" @bind-Value="Model.Website" />
+                <span asp-validation-for="Website" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Home">Volver</a>
+</div>
+
+@code {
+    public CreateModel Model { get; set; } = new();
+
+    private async Task HandleValidSubmit()
+    {
+
+        CreateProfileModel createProfileModel = new()
+        {
+            Name = Model.Name,
+            Lastname = Model.Lastname,
+            Website = new(Model.Website)
+        };
+
+        await Service.CreateProfileAsync(createProfileModel);
+
+        NavigationManager.NavigateTo("/");
+    }
+
+
+    public class CreateModel
+    {
+        [Required]
+        public string Name { get; set; }
+
+        [Required]
+        public string Lastname { get; set; }
+
+        [Required]
+        [Url]
+        public string Website { get; set; }
+    }
+
+}

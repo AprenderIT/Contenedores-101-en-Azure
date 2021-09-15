@@ -1,0 +1,26 @@
+﻿<div class="card" style="width: 18rem;">
+
+    @if (@Profile.Website.ImageLink is null)
+    {
+        <img class="card-img-top" src="/img/gray-solid-background.jpg" alt="@Profile.Website.Title">
+    }
+    else
+    {
+        <img class="card-img-top" src="@Profile.Website.ImageLink?.ToString()" alt="@Profile.Website.Title">
+    }
+
+    <div class="card-body">
+        <h5 class="card-title">@Profile.Website.Title</h5>
+        <h6 class="card-title">@Profile.Name @Profile.Lastname</h6>
+        <p class="card-text">@Profile.Website.Description</p>
+        <a href="@Profile.Website.Link?.ToString()" target="_blank" class="btn btn-primary">Ir al sitio</a>
+        <NavLink href=@("delete/" + Profile.Id.ToString()) class="btn btn-danger">Borrar</NavLink>
+    </div>
+    <div class="card-footer">
+        <small class="text-muted">@Profile.CreationTime.GetRelativeTime()</small>
+    </div>
+</div>
+@code {
+    [Parameter]
+    public Profile Profile { get; set; }
+}
