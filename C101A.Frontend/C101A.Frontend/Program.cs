@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace EnvironmentVariables.Frontend
+namespace C101A.Frontend
 {
     public class Program
     {

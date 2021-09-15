@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EnvironmentVariables.Frontend.Helpers
+namespace C101A.Frontend.Helpers
 {
     public static class CollectionsExtensions
     {

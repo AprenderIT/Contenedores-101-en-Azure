@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace EnvironmentVariables.Frontend.Helpers
+namespace C101A.Frontend.Helpers
 {
     public static class DateTimeExtensions
     {

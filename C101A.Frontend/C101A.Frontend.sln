@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.223
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnvironmentVariables.Frontend", "EnvironmentVariables.Frontend\EnvironmentVariables.Frontend.csproj", "{1EEA85F7-985D-48F2-ABFA-1B6549F1BEA6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C101A.Frontend", "C101A.Frontend\C101A.Frontend.csproj", "{1EEA85F7-985D-48F2-ABFA-1B6549F1BEA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
