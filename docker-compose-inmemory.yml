@@ -1,0 +1,15 @@
+version: '3'
+services:
+  c101a-inmemory-api:
+    image: aprenderit/c101a-inmemoryapi:latest
+    container_name: inmemory-api
+    ports:
+        - "80:6379"
+
+  c101a-frontend:
+    image: aprenderit/c101a-front:latest
+    container_name: frontend
+    environment:
+      BackendApi: inmemory-api
+    ports:
+        - "80:80"
