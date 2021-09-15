@@ -1,0 +1,35 @@
+﻿@model C101A.Mvc.Web.Models.EnvironmentVariableModel
+
+@{
+    ViewData["Title"] = "Variables de ambiente";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="EnvironmentVariables">
+    <div class="row">
+        <div class="col-sm-12 col-lg-8">
+            <input asp-for="Search" class="form-control" placeholder="Buscar..."/>
+        </div>
+        <div class="col-sm-12 col-lg-4">
+            <input type="submit" value="Buscar" class="btn btn-info" />
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Variable</th>
+            <th scope="col">Valor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var keyvalue in @Model.Variables)
+        {
+            <tr>
+                <th scope="row">@keyvalue.Key</th>
+                <td>@keyvalue.Value</td>
+            </tr>
+        }
+    </tbody>
+</table>
