@@ -1,55 +1,104 @@
+RESOURCE_GROUP_NAME="containers-101-rg"
+LOCATION="eastus"
+
+
+az group create --name $RGNAME --location $LOCATION
+
+
+// Necesitamos generar nombres únicos para los recursos, para eso usaremos las siguientes variables
+
+RAND=$(( $RANDOM % 99 + 1 ))
+INITIALS=""  // <-- Agregar acá las iniciales de tu nombre
+
+
+// Demo 1: ACI con imagen preexistente
+
+CONTAINER_INSTANCE_NAME=${INITIALS}-${RAND}-aci
+
+az container create \
+  --resource-group $RESOURCE_GROUP_NAME \
+  --name $CONTAINER_INSTANCE_NAME \
+  --image mcr.microsoft.com/azuredocs/aci-helloworld \
+  --ports 80 \
+  --dns-name-label $CONTAINER_INSTANCE_NAME \
+  --location eastus
+
+az container show \
+  --resource-group $RESOURCE_GROUP_NAME \
+  --name $CONTAINER_INSTANCE_NAME \
+  --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" \
+  --output table
+  
+// Abrir browser e ir a la URL devuelta como FQDN
+
+
+
+// Creación ACR
+
+REGISTRY_NAME="${INITIALS}${RAND}registry"
+
+az acr create -n $REGISTRY_NAME -g $RESOURCE_GROUP_NAME --sku Standard --location $LOCATION
+
+
+
+// Creacion ACIs
+
+REGISTRY_URL="${REGISTRY_NAME}.azurecr.io"
+
+USER="" // <-- Completar
+PWD="" // <-- Completar
+
 
 az acr repository list --name envioronmentvariablesregistry01 --output table
 
 
-
 az container create \
-    --resource-group envioronment-variables-group \
+    --resource-group $RGNAME \
     --name acr-tasks-mvc \
-    --image envioronmentvariablesregistry01.azurecr.io/mvc:6 \
-    --registry-login-server envioronmentvariablesregistry01.azurecr.io \
+    --image $REGISTRY_URL/mvc:latest \
+    --registry-login-server $REGISTRY_URL \
     --ip-address Public \
-    --location westus2 \
-    --registry-username "EnvioronmentVariablesRegistry01" \
-    --registry-password "RnB5fYgndQmAIm/69aLpjz6tPxCwT3ng"
+    --location $LOCATION \
+    --registry-username $USER \
+    --registry-password $PWD
 
 
 az container create \
-    --resource-group envioronment-variables-group \
+    --resource-group $RGNAME \
     --name acr-tasks-inmemory-api \
-    --image envioronmentvariablesregistry01.azurecr.io/inmemoryapi:2 \
-    --registry-login-server envioronmentvariablesregistry01.azurecr.io \
+    --image $REGISTRY_URL/inmemoryapi:latest \
+    --registry-login-server $REGISTRY_URL \
     --ip-address Public \
-    --location westus2 \
-    --registry-username "EnvioronmentVariablesRegistry01" \
-    --registry-password "RnB5fYgndQmAIm/69aLpjz6tPxCwT3ng" \
+    --location $LOCATION \
+    --registry-username $USER \
+    --registry-password $PWD \
     --environment-variables 'NumWords'='5' 'MinLength'='8'
 
 
 
 az container create \
-    --resource-group envioronment-variables-group \
+    --resource-group $RGNAME \
     --name acr-tasks-sql-api \
-    --image envioronmentvariablesregistry01.azurecr.io/sqlapi:2 \
-    --registry-login-server envioronmentvariablesregistry01.azurecr.io \
+    --image $REGISTRY_URL/sqlapi:latest \
+    --registry-login-server $REGISTRY_URL \
     --ip-address Public \
-    --location westus2 \
-    --registry-username "EnvioronmentVariablesRegistry01" \
-    --registry-password "RnB5fYgndQmAIm/69aLpjz6tPxCwT3ng" \
+    --location $LOCATION \
+    --registry-username $USER \
+    --registry-password $PWD \
     --environment-variables 'ConnectionString'='Server=tcp:environmentvariablesprofiledb.database.windows.net,1433;Initial Catalog=ProfilesDb;Persist Security Info=False;User ID=user;Password=Casa1998;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;' 
 
 
 
 az container create \
-    --resource-group envioronment-variables-group \
+    --resource-group $RGNAME \
     --name acr-tasks-fronted-blazor \
-    --image envioronmentvariablesregistry01.azurecr.io/blazor:11 \
-    --registry-login-server envioronmentvariablesregistry01.azurecr.io \
+    --image $REGISTRY_URL/blazor:latest \
+    --registry-login-server $REGISTRY_URL \
     --ip-address Public \
-    --location westus2 \
-    --registry-username "EnvioronmentVariablesRegistry01" \
-    --registry-password "RnB5fYgndQmAIm/69aLpjz6tPxCwT3ng" \
+    --location $LOCATION \
+    --registry-username $USER \
+    --registry-password $PWD \
     --environment-variables 'BackendApi'='http://20.109.133.5/'
 
 
-az container show --resource-group  envioronment-variables-group --name acr-tasks --query ipAddress.ip --output table
+az container show --resource-group $RGNAME --name acr-tasks --query ipAddress.ip --output table
