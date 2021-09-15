@@ -1,5 +1,5 @@
-using EnvironmentVariables.InMemory.Api.Data;
-using EnvironmentVariables.InMemory.Api.Services;
+using C101A.InMemory.Api.Data;
+using C101A.InMemory.Api.Services;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
-namespace EnvironmentVariables.InMemory.Api
+namespace C101A.InMemory.Api
 {
     public class Startup
     {
@@ -27,14 +27,14 @@ namespace EnvironmentVariables.InMemory.Api
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "EnvironmentVariables.InMemory.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "C101A.InMemory.Api", Version = "v1" });
             });
 
             services.AddHttpClient();
 
             services.AddTransient<IWebsiteService, WebsiteService>();
             services.AddTransient<IProfileService, ProfileService>();
-            services.AddDbContext<MyContext>(opt => opt.UseInMemoryDatabase(nameof(EnvironmentVariables)));
+            services.AddDbContext<MyContext>(opt => opt.UseInMemoryDatabase(nameof(C101A)));
 
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
@@ -51,7 +51,7 @@ namespace EnvironmentVariables.InMemory.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EnvironmentVariables.InMemory.Api v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "C101A.InMemory.Api v1"));
             }
             app.UseCors("MyPolicy");
             app.UseHttpsRedirection();

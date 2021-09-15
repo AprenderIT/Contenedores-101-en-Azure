@@ -1,9 +1,9 @@
-﻿using EnvironmentVariables.InMemory.Api.Data;
+﻿using C101A.InMemory.Api.Data;
 
 using System;
 using System.Threading.Tasks;
 
-namespace EnvironmentVariables.InMemory.Api.Services
+namespace C101A.InMemory.Api.Services
 {
     public interface IWebsiteService
     {

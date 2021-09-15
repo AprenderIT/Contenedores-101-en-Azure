@@ -1,11 +1,11 @@
-﻿using EnvironmentVariables.InMemory.Api.Data;
-using EnvironmentVariables.InMemory.Api.Models;
+﻿using C101A.InMemory.Api.Data;
+using C101A.InMemory.Api.Models;
 
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EnvironmentVariables.InMemory.Api.Services
+namespace C101A.InMemory.Api.Services
 {
     public interface IProfileService
     {

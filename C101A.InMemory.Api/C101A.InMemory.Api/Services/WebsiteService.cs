@@ -2,14 +2,14 @@
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 
-using EnvironmentVariables.InMemory.Api.Data;
+using C101A.InMemory.Api.Data;
 
 using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace EnvironmentVariables.InMemory.Api.Services
+namespace C101A.InMemory.Api.Services
 {
     public class WebsiteService : IWebsiteService
     {

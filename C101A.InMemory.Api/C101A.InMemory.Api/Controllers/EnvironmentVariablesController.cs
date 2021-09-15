@@ -1,5 +1,5 @@
-﻿using EnvironmentVariables.InMemory.Api.Helpers;
-using EnvironmentVariables.InMemory.Api.Models;
+﻿using C101A.InMemory.Api.Helpers;
+using C101A.InMemory.Api.Models;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,7 +7,7 @@ using System;
 using System.Collections;
 using System.Linq;
 
-namespace EnvironmentVariables.InMemory.Api.Controllers
+namespace C101A.InMemory.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 
-namespace EnvironmentVariables.InMemory.Api.Models
+namespace C101A.InMemory.Api.Models
 {
     public class EnvironmentVariableModel
     {

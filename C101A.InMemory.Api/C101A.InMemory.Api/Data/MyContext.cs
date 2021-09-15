@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 
-namespace EnvironmentVariables.InMemory.Api.Data
+namespace C101A.InMemory.Api.Data
 {
     public class MyContext : DbContext
     {

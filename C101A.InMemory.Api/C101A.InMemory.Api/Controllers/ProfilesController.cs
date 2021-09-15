@@ -1,6 +1,6 @@
-﻿using EnvironmentVariables.InMemory.Api.Data;
-using EnvironmentVariables.InMemory.Api.Models;
-using EnvironmentVariables.InMemory.Api.Services;
+﻿using C101A.InMemory.Api.Data;
+using C101A.InMemory.Api.Models;
+using C101A.InMemory.Api.Services;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EnvironmentVariables.InMemory.Api.Controllers
+namespace C101A.InMemory.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

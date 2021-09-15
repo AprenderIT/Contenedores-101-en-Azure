@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace EnvironmentVariables.InMemory.Api.Data
+namespace C101A.InMemory.Api.Data
 {
     public class Website
     {

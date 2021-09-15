@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace EnvironmentVariables.InMemory.Api.Helpers
+namespace C101A.InMemory.Api.Helpers
 {
     public static class CollectionsExtensions
     {

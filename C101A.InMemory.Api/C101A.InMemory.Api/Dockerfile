@@ -7,15 +7,15 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY "EnvironmentVariables.InMemory.Api.csproj" .
-RUN dotnet restore "EnvironmentVariables.InMemory.Api.csproj"
+COPY "C101A.InMemory.Api.csproj" .
+RUN dotnet restore "C101A.InMemory.Api.csproj"
 COPY . .
-RUN dotnet build "EnvironmentVariables.InMemory.Api.csproj" -c Release -o /app/build
+RUN dotnet build "C101A.InMemory.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "EnvironmentVariables.InMemory.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "C101A.InMemory.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "EnvironmentVariables.InMemory.Api.dll"]
+ENTRYPOINT ["dotnet", "C101A.InMemory.Api.dll"]

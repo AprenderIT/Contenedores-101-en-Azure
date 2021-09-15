@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace EnvironmentVariables.InMemory.Api
+namespace C101A.InMemory.Api
 {
     public class Program
     {

@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace EnvironmentVariables.InMemory.Api.Helpers
+namespace C101A.InMemory.Api.Helpers
 {
     public static class DateTimeExtensions
     {
