@@ -36,5 +36,5 @@ jobs:
        - name: 'Build and Push Image'   
          working-directory: ./C101A.Mvc.Web/C101A.Mvc.Web
          run: |
-           docker build . -t aprenderit/c101a-web-lin:latest .
+           docker build -t aprenderit/c101a-web-lin:latest .
            docker push aprenderit/c101a-web-lin:latest
