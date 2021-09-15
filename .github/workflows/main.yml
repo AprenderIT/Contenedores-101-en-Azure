@@ -1,0 +1,40 @@
+# This is a basic workflow to help you get started with Actions
+
+name: EnvironmentVariables.Mvc.Web
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+    paths:
+    - 'C101A.Mvc.Web/**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # checkout the repo
+       - name: 'Checkout GitHub Action'
+         uses: actions/checkout@main
+
+       - name: Docker Login
+         uses: docker/login-action@v1.10.0
+         with:
+           username: ${{ secrets.DOCKER_USER }}
+           password: ${{ secrets.DOCKER_PASSWORD }}
+
+           
+       - name: 'Build and Push Image'   
+         working-directory: ./C101A.Mvc.Web/C101A.Mvc.Web
+         run: |
+           docker build . -t aprenderit/c101a-web-lin:latest .
+           docker push aprenderit/c101a-web-lin:latest
