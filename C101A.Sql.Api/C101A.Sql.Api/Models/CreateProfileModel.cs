@@ -1,7 +1,7 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
 
-namespace EnvironmentVariables.Sql.Api.Models
+namespace C101A.Sql.Api.Models
 {
     public class CreateProfileModel
     {

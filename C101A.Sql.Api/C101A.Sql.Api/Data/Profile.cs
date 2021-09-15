@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace EnvironmentVariables.Sql.Api.Data
+namespace C101A.Sql.Api.Data
 {
     public class Profile
     {

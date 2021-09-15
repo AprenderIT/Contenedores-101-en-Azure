@@ -1,6 +1,6 @@
-﻿using EnvironmentVariables.Sql.Api.Data;
-using EnvironmentVariables.Sql.Api.Models;
-using EnvironmentVariables.Sql.Api.Services;
+﻿using C101A.Sql.Api.Data;
+using C101A.Sql.Api.Models;
+using C101A.Sql.Api.Services;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EnvironmentVariables.Sql.Api.Controllers
+namespace C101A.Sql.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

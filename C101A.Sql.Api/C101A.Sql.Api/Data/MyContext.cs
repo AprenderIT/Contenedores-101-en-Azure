@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 
-namespace EnvironmentVariables.Sql.Api.Data
+namespace C101A.Sql.Api.Data
 {
     public class MyContext : DbContext
     {

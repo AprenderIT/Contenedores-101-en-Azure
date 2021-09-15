@@ -1,5 +1,5 @@
-﻿using EnvironmentVariables.Sql.Api.Data;
-using EnvironmentVariables.Sql.Api.Models;
+﻿using C101A.Sql.Api.Data;
+using C101A.Sql.Api.Models;
 
 using Microsoft.EntityFrameworkCore;
 
@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace EnvironmentVariables.Sql.Api.Services
+namespace C101A.Sql.Api.Services
 {
     public class ProfileService : IProfileService
     {

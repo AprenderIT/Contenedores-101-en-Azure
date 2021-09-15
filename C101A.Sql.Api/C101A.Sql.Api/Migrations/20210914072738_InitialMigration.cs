@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace EnvironmentVariables.Sql.Api.Migrations
+namespace C101A.Sql.Api.Migrations
 {
     public partial class InitialMigration : Migration
     {

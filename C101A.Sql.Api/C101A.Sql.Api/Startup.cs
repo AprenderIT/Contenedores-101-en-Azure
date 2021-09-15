@@ -1,5 +1,5 @@
-using EnvironmentVariables.Sql.Api.Data;
-using EnvironmentVariables.Sql.Api.Services;
+using C101A.Sql.Api.Data;
+using C101A.Sql.Api.Services;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -17,7 +17,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace EnvironmentVariables.Sql.Api
+namespace C101A.Sql.Api
 {
     public class Startup
     {
@@ -35,7 +35,7 @@ namespace EnvironmentVariables.Sql.Api
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "EnvironmentVariables.Sql.Api", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "C101A.Sql.Api", Version = "v1" });
             });
 
             services.AddHttpClient();
@@ -65,7 +65,7 @@ namespace EnvironmentVariables.Sql.Api
             }
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EnvironmentVariables.Sql.Api v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "C101A.Sql.Api v1"));
             app.UseCors("MyPolicy");
 
             app.UseRouting();

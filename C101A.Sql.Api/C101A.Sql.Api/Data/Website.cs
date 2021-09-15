@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace EnvironmentVariables.Sql.Api.Data
+namespace C101A.Sql.Api.Data
 {
     public class Website
     {

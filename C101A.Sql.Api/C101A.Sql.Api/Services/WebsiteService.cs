@@ -2,14 +2,14 @@
 using AngleSharp.Dom;
 using AngleSharp.Html.Dom;
 
-using EnvironmentVariables.Sql.Api.Data;
+using C101A.Sql.Api.Data;
 
 using System;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace EnvironmentVariables.Sql.Api.Services
+namespace C101A.Sql.Api.Services
 {
     public class WebsiteService : IWebsiteService
     {

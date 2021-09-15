@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace EnvironmentVariables.Sql.Api
+namespace C101A.Sql.Api
 {
     public class Program
     {

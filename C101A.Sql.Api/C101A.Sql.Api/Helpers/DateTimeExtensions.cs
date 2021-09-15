@@ -1,7 +1,7 @@
 ﻿
 using System;
 
-namespace EnvironmentVariables.Sql.Api.Helpers
+namespace C101A.Sql.Api.Helpers
 {
     public static class DateTimeExtensions
     {
