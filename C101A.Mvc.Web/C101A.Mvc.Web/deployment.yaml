@@ -1,28 +1,70 @@
-# deployment.yaml
-apiVersion: apps/v1
-kind: Deployment
+kind: Service
+apiVersion: v1
 metadata:
-  name: ait-website
+  name: c101a-web-service
+  namespace: default-1676921141640
+  uid: bce05eae-f262-4313-9747-647eb0448c5f
+  resourceVersion: '15815'
+  creationTimestamp: '2023-02-20T19:25:53Z'
+  finalizers:
+    - service.kubernetes.io/load-balancer-cleanup
+  managedFields:
+    - manager: Mozilla
+      operation: Update
+      apiVersion: v1
+      time: '2023-02-20T19:25:53Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:allocateLoadBalancerNodePorts: {}
+          f:externalTrafficPolicy: {}
+          f:internalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":80,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+    - manager: cloud-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2023-02-20T19:26:06Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:finalizers:
+            .: {}
+            v:"service.kubernetes.io/load-balancer-cleanup": {}
+        f:status:
+          f:loadBalancer:
+            f:ingress: {}
+      subresource: status
 spec:
-  selector: # Define the wrapping strategy
-    matchLabels: # Match all pods with the defined labels
-      app: contoso-website # Labels follow the `name: value` template
-  template: # This is the template of the pod inside the deployment
-    metadata:
-      labels:
-        app: ait-website
-    spec:
-      nodeSelector:
-        kubernetes.io/os: linux
-      containers:
-        - name: ait-website
-          resources:
-            requests:
-              cpu: 100m
-              memory: 128Mi
-            limits:
-              cpu: 250m
-              memory: 256Mi
-          ports:
-            - containerPort: 80
-              name: http
+  ports:
+    - name: port80
+      protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 30270
+  selector:
+    app: c101a-web
+  clusterIP: 10.0.186.181
+  clusterIPs:
+    - 10.0.186.181
+  type: LoadBalancer
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  allocateLoadBalancerNodePorts: true
+  internalTrafficPolicy: Cluster
+status:
+  loadBalancer:
+    ingress:
+      - ip: 20.81.5.43
